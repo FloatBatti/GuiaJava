@@ -1,4 +1,4 @@
-package Clases;
+package com.agusbatti.prueba;
 
 public enum Enumerador {
 

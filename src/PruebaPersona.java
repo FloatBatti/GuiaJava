@@ -1,8 +1,7 @@
-import Clases.Enumerador;
-import Clases.Persona;
-
 import java.util.Arrays;
 import java.util.Collections;
+
+import com.agusbatti.prueba.*;
 
 public class PruebaPersona {
 
@@ -28,8 +27,11 @@ public class PruebaPersona {
 
         System.out.println(persona2);
 
+        System.out.println("----------------------------");
 
         Persona[] personaArray = {persona1,persona2};
+
+        Arrays.sort(personaArray);
 
         System.out.print(Arrays.toString(personaArray));
 

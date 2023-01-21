@@ -1,4 +1,4 @@
-package Clases;
+package com.agusbatti.prueba;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -78,10 +78,10 @@ public class Persona implements Comparable<Persona>{
     @Override
     public String toString() {
         return "Nombre: " + this.nombre + ",\n" +
-                "Apellido: " + this.ciudad + ",\n" +
+                "Apellido: " + this.apellido + ",\n" +
                 "Dni: " + this.dni + ",\n" +
                 "Ciudad: " + this.ciudad + ",\n"+
-                "Mascotas:" + Arrays.toString(this.mascotas);
+                "Mascotas:" + Arrays.toString(this.mascotas) + "\n";
     }
 
     @Override

@@ -15,7 +15,6 @@ public class Sistema {
         System.out.println("dir = " + dir);
 
         Properties p = System.getProperties();
-
         //p.list(System.out);  // Recibe como parámetro un imprimible y lista todas las propiedades
     }
 }
