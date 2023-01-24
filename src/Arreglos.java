@@ -64,5 +64,12 @@ public class Arreglos {
         System.out.println(Arrays.toString(des));
 
 
+        // EJEMPLO DE ORDENAMIENTO CON ALGORITMO QUICKSORT (El más rápido)
+
+        int[] array = {9, 5, 1, 8, 2, 7, 4, 3, 6};
+
+        
+
+
     }
 }

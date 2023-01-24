@@ -3,21 +3,31 @@ package com.agusbatti.prueba;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Persona implements Comparable<Persona>{
+public class Persona implements Comparable<Persona> {
 
-    //region Attributes
-    private String nombre;
-    private String apellido;
-    private String dni;
-    private String ciudad;
-    private String[] mascotas;
+    // region Attributes
+    protected String nombre; // La clase hija va a poder utilizar el atributo con "this"
+    protected String apellido;
+    protected String dni;
+    protected String ciudad;
+    private String[] mascotas; // La clase hija solo va a poder acceder al atributo a travez de un getter o
+                               // setter.
 
-    public static final String PAIS = "Argentina";  // Con Final no se puede modificar, es una constante. Suele ser estática, pública y se pone en mayúscula
-    //endregion
+    public static final String PAIS = "Argentina"; // Con Final no se puede modificar, es una constante. Suele ser
+                                                   // estática, pública y se pone en mayúscula
+    // endregion
 
-    //region Constructors
-    public Persona(){}
-    public Persona(String nombre, String apellido, String dni, String ciudad, int cantMascotas) {  // Al utilizar los '...' estamos pidiendo una cantidad de parámetros variable que luego se pasa como arreglo.
+    // region Constructors
+    public Persona() {
+    }
+
+    public Persona(String nombre, String apellido, String dni, String ciudad, int cantMascotas) { // Al utilizar los
+                                                                                                  // '...' estamos
+                                                                                                  // pidiendo una
+                                                                                                  // cantidad de
+                                                                                                  // parámetros variable
+                                                                                                  // que luego se pasa
+                                                                                                  // como arreglo.
 
         this.nombre = nombre;
         this.apellido = apellido;
@@ -25,9 +35,9 @@ public class Persona implements Comparable<Persona>{
         this.ciudad = ciudad;
         this.mascotas = new String[cantMascotas];
     }
-    //endregion
+    // endregion
 
-    //region Getters and Setters
+    // region Getters and Setters
     public String getNombre() {
         return nombre;
     }
@@ -59,14 +69,17 @@ public class Persona implements Comparable<Persona>{
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
     }
-    //endregion
+    // endregion
 
-    //region Overrides
+    // region Overrides
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if(o == null) return false;
-        if (!(o instanceof Persona persona)) return false;
+        if (this == o)
+            return true;
+        if (o == null)
+            return false;
+        if (!(o instanceof Persona persona))
+            return false;
         return Objects.equals(dni, persona.dni);
     }
 
@@ -80,7 +93,7 @@ public class Persona implements Comparable<Persona>{
         return "Nombre: " + this.nombre + ",\n" +
                 "Apellido: " + this.apellido + ",\n" +
                 "Dni: " + this.dni + ",\n" +
-                "Ciudad: " + this.ciudad + ",\n"+
+                "Ciudad: " + this.ciudad + ",\n" +
                 "Mascotas:" + Arrays.toString(this.mascotas) + "\n";
     }
 
@@ -90,21 +103,25 @@ public class Persona implements Comparable<Persona>{
         return this.dni.compareTo(o.dni) * -1;
     }
 
-    //endregion
+    // endregion
 
-    public Persona addMascota(String mascota){
+    public void saludar() {
+        System.out.println("Hola soy una persona");
+    }
+
+    public final Persona addMascota(String mascota) { // Al poner final indico que no puede sobreescribirse en las
+                                                      // clases hijas
 
         for (int i = 0; i < this.mascotas.length; i++) {
 
-            if(this.mascotas[i] == null){
+            if (this.mascotas[i] == null) {
 
                 this.mascotas[i] = mascota;
                 break;
             }
         }
 
-        return this;  // Permite concatenar el método
+        return this; // Permite concatenar el método
     }
-
 
 }
