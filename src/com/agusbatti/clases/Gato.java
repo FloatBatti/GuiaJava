@@ -1,4 +1,4 @@
-package com.agusbatti.prueba;
+package com.agusbatti.clases;
 
 public class Gato extends Mascota {
 
@@ -6,9 +6,17 @@ public class Gato extends Mascota {
         super(nombre, especie, raza, tamaño);
     }
 
+    public Gato(){}
+
     @Override
     public void hacerRuido() {
         System.out.println("El gato está maullando");  
+    }
+
+    @Override
+    public void dormir() {
+        System.out.println("El gato está duermiendo");
+        
     }
     
 }

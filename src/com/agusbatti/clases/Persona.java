@@ -1,4 +1,4 @@
-package com.agusbatti.prueba;
+package com.agusbatti.clases;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -6,6 +6,8 @@ import java.util.Objects;
 public class Persona implements Comparable<Persona> {
 
     // region Attributes
+    
+    protected Integer id;
     protected String nombre; // La clase hija va a poder utilizar el atributo con "this"
     protected String apellido;
     protected String dni;
@@ -69,6 +71,15 @@ public class Persona implements Comparable<Persona> {
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
     // endregion
 
     // region Overrides
@@ -85,7 +96,15 @@ public class Persona implements Comparable<Persona> {
 
     @Override
     public int hashCode() {
-        return Objects.hash(dni);
+        return Objects.hash(dni); // Sirve para complementar el método equals y comparar de una forma más rápida
+                                  // dos objetos en una tabla hash. Cuando Java compara dos objetos en estructuras
+                                  // de tipo hash (HashMap, HashSet etc) primero invoca al método hashcode y luego
+                                  // el equals. Si los métodos hashcode de cada objeto devuelven diferente hash no
+                                  // seguirá comparando y considerará a los objetos distintos. En el caso en el
+                                  // que ambos objetos compartan el mismo hashcode Java invocará al método
+                                  // equals() y revisará a detalle si se cumple la igualdad. De esta forma las
+                                  // búsquedas quedan simplificadas en estructuras hash.
+
     }
 
     @Override

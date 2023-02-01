@@ -30,8 +30,11 @@ public class Fechas {
         calendario.set(1997, Calendar.DECEMBER,18,20,0,0);  // El mes se indica como la posición en un arreglo donde enero es 0.
 
         fecha = calendario.getTime();
+        int hora = calendario.get(Calendar.HOUR_OF_DAY);
+
 
         System.out.println("La fecha seteada en el calendario: " + fecha);
+        System.out.println("La hora seteada es: " + hora);
 
         String fechaString = "2022-12-24";
 

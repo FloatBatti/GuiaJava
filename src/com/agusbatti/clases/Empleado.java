@@ -1,11 +1,18 @@
-package com.agusbatti.prueba;
+package com.agusbatti.clases;
 
-public final class Empleado extends Persona { // Hereda de Persona. Al poner final estoy indicando que no puede ser
-                                              // heredada
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
+public final class Empleado extends Persona implements Trabajo { // Hereda de Persona. Al poner final estoy indicando
+                                                                 // que no puede ser
+    // heredada
 
     private float sueldo;
     private String puesto;
     private String cbu;
+    private Date date = new Date();
+
+    public Empleado(){}
 
     public Empleado(
             String nombre,
@@ -24,6 +31,8 @@ public final class Empleado extends Persona { // Hereda de Persona. Al poner fin
         this.puesto = puesto;
         this.cbu = cbu;
     }
+
+    // region Getters and Setters
 
     public float getSueldo() {
         return sueldo;
@@ -49,6 +58,8 @@ public final class Empleado extends Persona { // Hereda de Persona. Al poner fin
         this.cbu = cbu;
     }
 
+    // endregion
+
     @Override
     public String toString() {
         return super.toString() +
@@ -67,4 +78,47 @@ public final class Empleado extends Persona { // Hereda de Persona. Al poner fin
                                                                                     // "protected", de lo contrario
                                                                                     // necesitaria un getter
     }
+
+    // region Métodos de interface Trabajo
+
+    @Override
+    public void entrada() {
+
+        SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
+
+        System.out.println("La persona ingresó a las: " + df.format(date));
+
+    }
+
+    @Override
+    public void trabajar() {
+
+        System.out.println("La persona está trabajando");
+
+    }
+
+    @Override
+    public void tomarBreak() {
+
+        System.out.println("La persona está tomando el break");
+
+    }
+
+    @Override
+    public void irBaño() {
+
+        SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
+        System.out.println("La persona fue al baño a las " + df.format(date));
+
+    }
+
+    @Override
+    public void salida() {
+
+        SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
+        System.out.println("La persona se retira a las " + df.format(date));
+
+    }
+
+    // endregion
 }
