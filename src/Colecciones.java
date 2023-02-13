@@ -22,6 +22,13 @@ public class Colecciones {
                                                              // inserción.
 
         nombres.add("Agustin");
+        nombres.add("Juan");
+        nombres.add(1, "Pedro");  // Inserta un elemento en la posición indicada. Los elementos 
+                                                 // que estaban en esa posición se desplazan una posición a la derecha.
+
+        nombres.set(1, "Agustin"); // Reemplaza el elemento en la posición indicada por el elemento indicado.
+
+        System.out.println("nombres" + nombres.toString());
 
         ArrayList<String> otrosNombres = new ArrayList<>(Arrays.asList("Juan", "Pedro", "Agustin")); // Con asList puedo
                                                                                                      // instanciar una
@@ -31,14 +38,10 @@ public class Colecciones {
         System.out.println("otrosNombres.size(): " + otrosNombres.size());
         otrosNombres.remove(0); // Remueve el elemento del indice indicado
 
-        LinkedList<String> animales = new LinkedList<String>(Arrays.asList("Perro", "Gato", "Vaca", "Leon")); // Es una
-                                                                                                              // lista
-                                                                                                              // doblemente
-                                                                                                              // enlazada.
-                                                                                                              // Permite
-                                                                                                              // elementos
-        // repetidos. Mantiene el orden de inserción. Su
-        // manipulacion es más rapida.
+        LinkedList<String> animales = new LinkedList<String>(Arrays.asList("Perro", "Gato", "Vaca", "Leon")); 
+        
+        // Es una lista doblemente enlazada. Permite elementos repetidos. Mantiene el orden de inserción. Su 
+        // manipulacion es más rapida. Se puede operar con el útlimo y primer elemento de la lista.
 
         animales.removeLast(); // Remueve el último
         animales.removeFirst(); // Remueve el primero
@@ -49,7 +52,8 @@ public class Colecciones {
                                                           // (se puede compartir una misma instancia entre varios
                                                           // hilos). Contiene mas métodos fuera del marco de las
                                                           // colecciones.
-        Persona persona1 = new Persona();
+
+        Persona persona1 = new Persona("Agustin", "Battisti", "12345678", "MDP", 2);
         personas.add(persona1);
         System.out.println("Posicion de persona1 en el vector personas: " + personas.indexOf(persona1));
 
@@ -68,6 +72,14 @@ public class Colecciones {
                                                                                                  // la instanciación
 
         numerosFloat.clear(); // Remueve todos los elementos de una lista
+
+        Persona persona2 = new Persona("Juan", "Perez", "87654231", "CABA", 2);
+        Persona persona3 = new Persona("Pedro", "Gomez", "963258741", "MDP", 2);
+
+        ArrayList<Persona> personasArrayList = new ArrayList<Persona>(Arrays.asList(persona1,persona2,persona3));
+
+        Collections.sort(personasArrayList);  // Permite ordenar una lista de objetos que implementen la interfaz
+                                              // Comparable. En este caso ordena por dni.
 
         //endregion
 
@@ -105,15 +117,16 @@ public class Colecciones {
 
         HashSet<String> hashSets = new HashSet<String>(); // Utiliza la tabla hash para el almacenamiento a travéz del
                                                           // hashing. Los elementos deben ser únicos. No se guardan con
-                                                          // un orden especofico.
+                                                          // un orden especifico.
 
-        hashSets.addAll(animales); // Agrega todos los elementos de otra Collecion
+        hashSets.addAll(animales); // Agrega todos los elementos de otra Collecio.
         hashSets.add("Mono");
+        hashSets.add("Mono");  // En este caso devuelve false porque ya existe el elemento en la estructura.  
 
         System.out.println("Estructura Hash: " + hashSets);
 
-        LinkedHashSet<String> linkedSet = new LinkedHashSet<String>(); // Extiendo de la clase HashSet y tambien
-                                                                       // contiene elementos únicos. Mantiene el orden
+        LinkedHashSet<String> linkedSet = new LinkedHashSet<String>(); // Extiende de la clase HashSet y tambien permite
+                                                                       // unicamente elementos únicos. Mantiene el orden 
                                                                        // de inserción y permite elementos nulos.
 
         linkedSet.addAll(otrosNombres);
@@ -152,7 +165,7 @@ public class Colecciones {
         //region INTERFAZ MAP
 
         // Esta interfaz permite almacenar datos de manera clave-valor (<c , v>) de
-        // manera que para una clave solo se tiene un valor. Se conoce como diccionario
+        // manera que para una clave solo se tiene un valor. Se conoce como diccionario.
 
         HashMap<Integer, String> map = new HashMap<Integer, String>(); // No hay un orden especifico. No se aceptan
                                                                        // valores nulos.

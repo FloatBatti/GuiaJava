@@ -4,9 +4,9 @@ public interface Trabajo {  // Es como una clase abstracta pero no permite que a
                             // Captura similitudes entre clases no relacionadas sin forzar una relación entre ellas.
                             // Definen comportamientos que una o mas clases van a utilizar.
                             // Permiten "heredar" más de una clase. Se pueden implementar interfaces ilimitadas.
-                            // Los métodos no llevan el modificador "abstract", ya que todos son abstractos.}
+                            // Los métodos no llevan el modificador "abstract", ya que todos son abstractos.
                             // Como todos sus métodos son abstractos las clases hijas se veran 
-                            // obligadas a implementarlos.
+                            // obligadas a implementarlos a todos.
                             // Las interfaces pueden heredar de otras interfaces con "extends".
 
     

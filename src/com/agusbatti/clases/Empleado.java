@@ -4,8 +4,7 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 
 public final class Empleado extends Persona implements Trabajo { // Hereda de Persona. Al poner final estoy indicando
-                                                                 // que no puede ser
-    // heredada
+                                                                 // que no puede ser heredada
 
     private float sueldo;
     private String puesto;

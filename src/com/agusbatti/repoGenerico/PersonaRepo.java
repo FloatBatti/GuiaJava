@@ -8,7 +8,7 @@ import com.agusbatti.clases.Persona;
 
 public class PersonaRepo implements IRepository<Persona>{
 
-    List<Persona> personaList = new ArrayList();
+    List<Persona> personaList = new ArrayList<Persona>();
 
     @Override
     public List<Persona> listar() {

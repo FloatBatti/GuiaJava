@@ -68,7 +68,6 @@ public abstract class Mascota { // Siempre es una clase padre, representa un con
     }
 
     // endregion
-
     
     public void agregarComida(String comida) { // Puede haber métodos no abstractos. A veces todas las clases hijas
                                                // implementan los mismo
