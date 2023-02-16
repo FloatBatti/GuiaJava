@@ -36,7 +36,9 @@ public class Colecciones {
                                                                                                      // elementos.
 
         System.out.println("otrosNombres.size(): " + otrosNombres.size());
-        otrosNombres.remove(0); // Remueve el elemento del indice indicado
+
+        otrosNombres.remove(0);  // Remueve el elemento que se encuentra en el indice indicado.
+        otrosNombres.remove("Agustin"); // Remueve el elemento indicado por instancia (utiliza equals).
 
         LinkedList<String> animales = new LinkedList<String>(Arrays.asList("Perro", "Gato", "Vaca", "Leon")); 
         
@@ -80,6 +82,27 @@ public class Colecciones {
 
         Collections.sort(personasArrayList);  // Permite ordenar una lista de objetos que implementen la interfaz
                                               // Comparable. En este caso ordena por dni.
+
+        animales.add("Tortuga");
+        animales.add("Conejo");
+        ListIterator<String> listIterator = animales.listIterator();  // Solo sirve para linkedList.
+
+        while (listIterator.hasNext()) {  // hasNext devuelve true si hay un elemento siguiente.
+
+            // .nextIndex() devuelve el indice del elemento siguiente.
+            // .next() devuelve el elemento siguiente.
+            System.out.println("Indice en " + listIterator.nextIndex()+ ": " + listIterator.next());  
+            
+        }
+
+        System.out.println("El indice quedo en el último elemento de la lista y ahora recorro hacia atrás:");
+
+        while (listIterator.hasPrevious()) {  // hasPrevious devuelve true si hay un elemento anterior.
+
+            // .previousIndex() devuelve el indice del elemento anterior.
+            // .previous() devuelve el elemento anterior.
+            System.out.println("Indice en " + listIterator.previousIndex()+ ": " + listIterator.previous());  
+        }
 
         //endregion
 
@@ -185,6 +208,7 @@ public class Colecciones {
         }
 
         TreeMap<Integer, String> treeMap = new TreeMap<Integer, String>(); // Árbol pero con clave valor.
+                                                                           // Se ordena en función de la clave.
                                                                            
 
         treeMap.put(2, "Mar del Plata");
@@ -210,7 +234,12 @@ public class Colecciones {
         linkedHashMap.put(11, "Nicolas");
         linkedHashMap.put(1, "Maria");
 
-        // Una forma alternativa de como iterar Maps
+        // Una forma alternativa de como iterar Maps.
+        // Se utiliza el método entrySet() que devuelve un Set de tipo Map.Entry.
+        // El Map.Entry es una interfaz que representa una entrada (clave - valor) de un Map.
+        // El Map.Entry tiene dos métodos getKey() y getValue() que nos permiten obtener
+        // la clave y el valor de la entrada.
+        
         for (Entry<Integer, String> alumno : linkedHashMap.entrySet()) {
             Integer clave = alumno.getKey();
             String valor = alumno.getValue();
