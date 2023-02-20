@@ -1,9 +1,12 @@
 package com.agusbatti.clases;
 
 import java.util.Date;
+
+import como.agusbatti.interfaces.ITrabajo;
+
 import java.text.SimpleDateFormat;
 
-public final class Empleado extends Persona implements Trabajo { // Hereda de Persona. Al poner final estoy indicando
+public final class Empleado extends Persona implements ITrabajo { // Hereda de Persona. Al poner final estoy indicando
                                                                  // que no puede ser heredada
 
     private float sueldo;

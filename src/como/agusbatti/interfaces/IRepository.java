@@ -1,4 +1,4 @@
-package com.agusbatti.repoGenerico;
+package como.agusbatti.interfaces;
 
 import java.util.List;
 

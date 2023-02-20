@@ -2,8 +2,8 @@ package com.agusbatti.clases;
 
 public class Gato extends Mascota {
 
-    public Gato(String nombre, String especie, String raza, String tamaño) {
-        super(nombre, especie, raza, tamaño);
+    public Gato(String nombre, String raza, String tamaño) {
+        super(nombre, raza, tamaño);
     }
 
     public Gato(){}

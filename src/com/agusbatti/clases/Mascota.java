@@ -17,9 +17,12 @@ public abstract class Mascota { // Siempre es una clase padre, representa un con
     public Mascota() {
     }
 
-    public Mascota(String nombre, String especie, String raza, String tamaño) {
+    public Mascota(String nombre){
         this.nombre = nombre;
-        this.especie = especie;
+    }
+
+    public Mascota(String nombre, String raza, String tamaño) {
+        this.nombre = nombre;
         this.raza = raza;
         this.tamaño = tamaño;
         this.comidaFavorita = new String[5];
@@ -35,13 +38,6 @@ public abstract class Mascota { // Siempre es una clase padre, representa un con
         this.nombre = nombre;
     }
 
-    public String getEspecie() {
-        return especie;
-    }
-
-    public void setEspecie(String especie) {
-        this.especie = especie;
-    }
 
     public String getRaza() {
         return raza;
@@ -85,7 +81,7 @@ public abstract class Mascota { // Siempre es una clase padre, representa un con
 
     @Override
     public String toString() {
-        return "Mascota [nombre=" + nombre + ", especie=" + especie + ", raza=" + raza + ", tamaño=" + tamaño
+        return "Mascota [nombre=" + nombre + ", raza=" + raza + ", tamaño=" + tamaño
                 + ", comidaFavorita=" + Arrays.toString(comidaFavorita) + "]";
     }
 

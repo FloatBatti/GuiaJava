@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 import com.agusbatti.clases.Persona;
 
+import como.agusbatti.interfaces.IRepository;
+
 public class PersonaRepo implements IRepository<Persona>{
 
     List<Persona> personaList = new ArrayList<Persona>();
