@@ -1,7 +1,7 @@
+import com.agusbatti.clases.Persona;
+
 import java.util.*;
 import java.util.Map.Entry;
-
-import com.agusbatti.clases.Persona;
 
 public class Colecciones {
 
@@ -12,36 +12,35 @@ public class Colecciones {
         // Un ejemplo es el método add presente en todos los tipos de listas.
         // El método add devuelve true o false indicando si fue agregado o no. Sirve
         // para detectar duplicados en los sets.
-        // Todo lo que esta dentro de Collection tiene un Iterator que se utiliza con un while.
+        // Lo que esta dentro de Collection tiene un Iterator que se utiliza con un while.
 
         //region INTERFAZ LIST
 
         ArrayList<String> nombres = new ArrayList<String>(); // Es un arreglo dinámico (puedo cambiar su tamaño en
-                                                             // tiempo de ejecución) o lista simplemente enlazada.
-                                                             // Permite elementos duplicados. Mantiene el orden de
-                                                             // inserción.
+        // tiempo de ejecución) o lista simplemente enlazada.
+        // Permite elementos duplicados. Mantiene el orden de inserción.
 
         nombres.add("Agustin");
         nombres.add("Juan");
         nombres.add(1, "Pedro");  // Inserta un elemento en la posición indicada. Los elementos 
-                                                 // que estaban en esa posición se desplazan una posición a la derecha.
+        // que estaban en esa posición se desplazan una posición a la derecha.
 
         nombres.set(1, "Agustin"); // Reemplaza el elemento en la posición indicada por el elemento indicado.
 
         System.out.println("nombres" + nombres.toString());
 
         ArrayList<String> otrosNombres = new ArrayList<>(Arrays.asList("Juan", "Pedro", "Agustin")); // Con asList puedo
-                                                                                                     // instanciar una
-                                                                                                     // lista con
-                                                                                                     // elementos.
+        // instanciar una
+        // lista con
+        // elementos.
 
         System.out.println("otrosNombres.size(): " + otrosNombres.size());
 
         otrosNombres.remove(0);  // Remueve el elemento que se encuentra en el indice indicado.
         otrosNombres.remove("Agustin"); // Remueve el elemento indicado por instancia (utiliza equals).
 
-        LinkedList<String> animales = new LinkedList<String>(Arrays.asList("Perro", "Gato", "Vaca", "Leon")); 
-        
+        LinkedList<String> animales = new LinkedList<String>(Arrays.asList("Perro", "Gato", "Vaca", "Leon"));
+
         // Es una lista doblemente enlazada. Permite elementos repetidos. Mantiene el orden de inserción. Su 
         // manipulacion es más rapida. Se puede operar con el útlimo y primer elemento de la lista.
 
@@ -51,17 +50,16 @@ public class Colecciones {
         System.out.println("animales: " + animales.toString());
 
         Vector<Persona> personas = new Vector<Persona>(); // Es parecido a una lista pero esta si es está sincornizada
-                                                          // (se puede compartir una misma instancia entre varios
-                                                          // hilos). Contiene mas métodos fuera del marco de las
-                                                          // colecciones.
+        // (se puede compartir una misma instancia entre varios
+        // hilos). Contiene mas métodos fuera del marco de las
+        // colecciones.
 
         Persona persona1 = new Persona("Agustin", "Battisti", "12345678", "MDP", 2);
         personas.add(persona1);
         System.out.println("Posicion de persona1 en el vector personas: " + personas.indexOf(persona1));
 
         Stack<Integer> numeros = new Stack<Integer>(); // Es una estructura de tipo LIFO (last in - first out), es
-                                                       // decir, una pila, donde el último que ingresa es el primero que
-                                                       // sale.
+        // decir, una pila, donde el último que ingresa es el primero que sale.
 
         numeros.push(5); // Inserta un elemento
         numeros.push(8);
@@ -69,19 +67,19 @@ public class Colecciones {
         numeros.peek(); // Devuelve pero no elimina el primer elemento de la pila
 
         List<Float> numerosFloat = new ArrayList<Float>(Arrays.asList(5.8f, 6.9f, 3.2f, 14.7f)); // Se puedo usar List
-                                                                                                 // de manera general y
-                                                                                                 // luego especificar en
-                                                                                                 // la instanciación
+        // de manera general y
+        // luego especificar en
+        // la instanciación
 
         numerosFloat.clear(); // Remueve todos los elementos de una lista
 
         Persona persona2 = new Persona("Juan", "Perez", "87654231", "CABA", 2);
         Persona persona3 = new Persona("Pedro", "Gomez", "963258741", "MDP", 2);
 
-        ArrayList<Persona> personasArrayList = new ArrayList<Persona>(Arrays.asList(persona1,persona2,persona3));
+        ArrayList<Persona> personasArrayList = new ArrayList<Persona>(Arrays.asList(persona1, persona2, persona3));
 
         Collections.sort(personasArrayList);  // Permite ordenar una lista de objetos que implementen la interfaz
-                                              // Comparable. En este caso ordena por dni.
+        // Comparable. En este caso ordena por dni.
 
         animales.add("Tortuga");
         animales.add("Conejo");
@@ -89,10 +87,10 @@ public class Colecciones {
 
         while (listIterator.hasNext()) {  // hasNext devuelve true si hay un elemento siguiente.
 
-            // .nextIndex() devuelve el indice del elemento siguiente.
+            // .nextIndex() devuelve el índice del elemento siguiente.
             // .next() devuelve el elemento siguiente.
-            System.out.println("Indice en " + listIterator.nextIndex()+ ": " + listIterator.next());  
-            
+            System.out.println("Indice en " + listIterator.nextIndex() + ": " + listIterator.next());
+
         }
 
         System.out.println("El indice quedo en el último elemento de la lista y ahora recorro hacia atrás:");
@@ -101,7 +99,7 @@ public class Colecciones {
 
             // .previousIndex() devuelve el indice del elemento anterior.
             // .previous() devuelve el elemento anterior.
-            System.out.println("Indice en " + listIterator.previousIndex()+ ": " + listIterator.previous());  
+            System.out.println("Indice en " + listIterator.previousIndex() + ": " + listIterator.previous());
         }
 
         //endregion
@@ -109,18 +107,18 @@ public class Colecciones {
         //region INTERFAZ QUEUE
 
         PriorityQueue<Integer> integerPriority = new PriorityQueue<>(); // Es una estructura de tipo FIFO (first in -
-                                                                        // first out), es decir, una cola, donde el
-                                                                        // primero que entra es el primero que sale.
-                                                                        // Los elementos que contiene van a ser
-                                                                        // procesados por prioridad y no permire
-                                                                        // nulos.
+        // first out), es decir, una cola, donde el
+        // primero que entra es el primero que sale.
+        // Los elementos que contiene van a ser
+        // procesados por prioridad y no permire
+        // nulos.
 
         integerPriority.add(5);
         integerPriority.add(6);
         integerPriority.poll(); // Remueve y devuelve el elemento que esta en la cabecera de la cola
 
         Deque<Integer> empleadosDeque; // A diferencia de la cola podemos eliminar elementos de ambos extremos. Es mas
-                                       // rápido que ArrayList y Stack.
+        // rápido que ArrayList y Stack.
 
         empleadosDeque = new ArrayDeque<Integer>(Arrays.asList(7, 8, 5, 3, 9));
 
@@ -139,18 +137,18 @@ public class Colecciones {
         //region INTERFAZ SET
 
         HashSet<String> hashSets = new HashSet<String>(); // Utiliza la tabla hash para el almacenamiento a travéz del
-                                                          // hashing. Los elementos deben ser únicos. No se guardan con
-                                                          // un orden especifico.
+        // hashing. Los elementos deben ser únicos. No se guardan con
+        // un orden especifico.
 
-        hashSets.addAll(animales); // Agrega todos los elementos de otra Collecio.
+        hashSets.addAll(animales); // Agrega todos los elementos de otra Collecion.
         hashSets.add("Mono");
         hashSets.add("Mono");  // En este caso devuelve false porque ya existe el elemento en la estructura.  
 
         System.out.println("Estructura Hash: " + hashSets);
 
         LinkedHashSet<String> linkedSet = new LinkedHashSet<String>(); // Extiende de la clase HashSet y tambien permite
-                                                                       // unicamente elementos únicos. Mantiene el orden 
-                                                                       // de inserción y permite elementos nulos.
+        // unicamente elementos únicos. Mantiene el orden
+        // de inserción y permite elementos nulos.
 
         linkedSet.addAll(otrosNombres);
         linkedSet.add("Maria");
@@ -159,11 +157,11 @@ public class Colecciones {
 
         System.out.println("Estructura LinkedHashSet: " + linkedSet);
 
-        TreeSet<Integer> arbolInteger1 = new TreeSet<Integer>(); // Utiliza un árbol para el almacenamiento. Contiene
-                                                                 // elementos únicos. Tiene el timpo de recuperación más
-                                                                 // rápido de los Sets. Los elementos son ordenados de
-                                                                 // forma natural (numericamente o alfabeticamente) y
-                                                                 // de manera ascendente.
+        TreeSet<Integer> arbolInteger1 = new TreeSet<>(); // Utiliza un árbol para el almacenamiento. Contiene
+        // elementos únicos. Tiene el timpo de recuperación más
+        // rápido de los Sets. Los elementos son ordenados de
+        // forma natural (numericamente o alfabeticamente) y
+        // de manera ascendente.
 
         arbolInteger1.add(8);
         arbolInteger1.add(2);
@@ -181,7 +179,6 @@ public class Colecciones {
 
         System.out.println("Arbol inverso : " + arbolInteger2);
 
-    
 
         //endregion
 
@@ -191,7 +188,7 @@ public class Colecciones {
         // manera que para una clave solo se tiene un valor. Se conoce como diccionario.
 
         HashMap<Integer, String> map = new HashMap<Integer, String>(); // No hay un orden especifico. No se aceptan
-                                                                       // valores nulos.
+        // valores nulos.
 
         map.put(1, "Agustín");
         map.put(15, "Juan");
@@ -208,8 +205,8 @@ public class Colecciones {
         }
 
         TreeMap<Integer, String> treeMap = new TreeMap<Integer, String>(); // Árbol pero con clave valor.
-                                                                           // Se ordena en función de la clave.
-                                                                           
+        // Se ordena en función de la clave.
+
 
         treeMap.put(2, "Mar del Plata");
         treeMap.put(37, "Pinamar");
@@ -224,10 +221,8 @@ public class Colecciones {
             System.out.println("Clave: " + key + " -> Valor: " + treeMap.get(key));
         }
 
-        LinkedHashMap<Integer, String> linkedHashMap = new LinkedHashMap<Integer, String>(); // Se ordena en función de
-                                                                                             // como se van
-                                                                                             // introduciendo los
-                                                                                             // elementos
+        LinkedHashMap<Integer, String> linkedHashMap = new LinkedHashMap<Integer, String>(); // Se ordena en función de como se van
+        // introduciendo los elementos.
 
         linkedHashMap.put(2, "Jose");
         linkedHashMap.put(37, "Camila");
@@ -239,7 +234,7 @@ public class Colecciones {
         // El Map.Entry es una interfaz que representa una entrada (clave - valor) de un Map.
         // El Map.Entry tiene dos métodos getKey() y getValue() que nos permiten obtener
         // la clave y el valor de la entrada.
-        
+
         for (Entry<Integer, String> alumno : linkedHashMap.entrySet()) {
             Integer clave = alumno.getKey();
             String valor = alumno.getValue();

@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -10,8 +11,8 @@ public class APIStream {
 
     public static void main(String[] args) {
 
-        //region STREAM
-
+        //region STREAMS
+        
         // Combina las mejores ideas del Iterator y la programación funcional.
         // No sirven para almacenar datos, solo para procesarlos.
         // Se pueden crear streams a partir de colecciones, arrays o métodos.
@@ -68,8 +69,6 @@ public class APIStream {
 
         perrosStream.forEach(System.out::println);
 
-        perros.stream().forEach(System.out::println);
-
         System.out.println("------------------------");
 
         //endregion
@@ -81,9 +80,10 @@ public class APIStream {
         // Retorna un nuevo stream con los elementos transformados.
         
         // El operador peek() permite inspeccionar los elementos de un stream, utiliza la interface Consumer.
+
         Stream.of("A", "B", "C", "D", "E", "F", "G", "H", "I", "J")
 
-                .peek(System.out::println)  // Inspecciona el elemento. Devuelve el elmento original.
+                .peek(System.out::println)  // Inspecciona el elemento. No transforma el elemento.
                 .map(String::toLowerCase)   // Transforma el elemento. Devuelve el elemento transformado.
                 .forEach(System.out::println);  // Recorre el stream.
         
@@ -94,6 +94,8 @@ public class APIStream {
                 .map(String::toLowerCase);  
 
         // El método collect() permite convertir un stream en una colección.
+        // El método collect() recibe como parámetro un Collector.
+        // Collectors va tomando los elementos del stream y los va agregando a la colección.
         
         List<String> letrasList = letras.collect(Collectors.toList());
 
@@ -106,6 +108,8 @@ public class APIStream {
         List<Perro> perrosList = perrosStream.map(nombre -> new Perro(nombre)).collect(Collectors.toList());
 
         perrosList.forEach(System.out::println);
+
+        System.out.println("------------------------");
                   
         //endregion
 
@@ -113,8 +117,9 @@ public class APIStream {
 
         // El operador filter() permite filtrar los elementos de un stream, utiliza la interface Predicate.
         // Retorna un nuevo stream con los elementos filtrados.
-        // Si el predicado retorna true, el elemento es agregado al nuevo stream.
-        // Si el predicado retorna false, el elemento no es agregado al nuevo stream.
+        // El predicado recibe como parámetro el elemento del stream y evaluo si debe ser agregado al nuevo stream.
+        // Si el predicado retorna true, el elemento es agregado.
+        // Si el predicado retorna false, el elemento no es agregado.
 
         Stream<String> letrasFiltradas = Stream.of("A", "B", "C", "D", "E", "F", "G", "H", "I", "J")
                 .filter(letra -> letra.compareTo("E") > 0);
@@ -124,6 +129,7 @@ public class APIStream {
         System.out.println("------------------------");
 
         // El operador distinct() permite eliminar los elementos duplicados de un stream.
+        // Distinct es un método intermedio, por lo tanto, no se ejecuta hasta que no se invoca un método terminal. 
 
         Stream<String> palabrasSinDuplicados = Stream.of("Casa", "Auto", "Moto", "Casa", "Moto", "Avion", "Casa", "Moto", "Avion")
                 .distinct();
@@ -136,7 +142,71 @@ public class APIStream {
 
         System.out.println("------------------------");
 
+        // findFirst() retorna el primer elemento del stream. Es un método terminal.
+        // Si el stream está vacío, retorna un Optional vacío.
+        // Si el stream no está vacío, retorna un Optional con el primer elemento del stream.
+        // El método get() retorna el elemento del Optional.
+        // Si el Optional está vacío, lanza una excepción, por ende, hay que utilizar un bloque try-catch.
 
+        String primerAparicion = Stream.of("Casa", "Auto", "Moto", "Casa", "Moto", "Avion", "Casa", "Moto", "Avion")
+                .filter(palabra -> palabra.equals("Avion")).findFirst().get();
+
+        System.out.println(primerAparicion);
+
+        System.out.println("------------------------");
+
+        // findAny() retorna un elemento del stream. Es un método terminal.
+        // Si el stream está vacío, retorna un Optional vacío.
+        // Si el stream no está vacío, retorna un Optional con un elemento del stream.
+
+        String aparicion = Stream.of("Casa", "Auto", "Moto", "Casa", "Moto", "Avion", "Casa", "Moto", "Avion")
+                .filter(palabra -> palabra.equals("Moto")).findAny().get();
+
+        System.out.println(aparicion);
+
+        System.out.println("------------------------");
+
+        // anyMatch() retorna true si al menos un elemento del stream cumple con el predicado. Es un método terminal.
+
+        System.out.println("Ingrese en que se mueve por la ciudad: ");
+        Scanner scanner = new Scanner(System.in);
+        String transporte = scanner.nextLine();
+
+        boolean macth = Stream.of("Auto", "Moto", "Avion", "Autobús", "Camión")
+                .anyMatch(palabra -> palabra.equals(transporte));
+
+        System.out.println(macth);
+
+        System.out.println("------------------------");
+
+        // count() retorna la cantidad de elementos del stream. Es un método terminal.
+        // Como antes tiene un filter, el count() cuenta los elementos que cumplen con el predicado.
+        long count = Stream.of("Auto", "Moto", "", "Avion", "Autobús", "Camión","")
+                .filter(String::isEmpty).count();
+
+        System.out.println(count);
+
+        System.out.println("------------------------");
+
+        // reduce() permite reducir los elementos de un stream a un único valor. Es un método terminal.
+        // El método reduce() recibe como parámetro un BinaryOperator.
+        // El primer parametro es el valor inicial.
+
+        String resultado = Stream.of("A", "B", "C", "D", "E", "F", "G", "H", "I", "J")
+                .reduce("Algunas letras del abecedario: ", (a, b) -> a + "-" + b);
+
+        System.out.println(resultado);
+
+        System.out.println("------------------------");
+
+        Integer factorial = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+                .reduce(1, (a, b) -> a * b);
+
+        System.out.println(factorial);
+
+        System.out.println("------------------------");
+
+         
 
         //endregion
     }
